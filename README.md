@@ -34,7 +34,7 @@ Run the command `bash run_adv_training.sh`. The images of the distribution of no
 
 ### Note  
 * The norm decay algorithms and related code are located in the directory `./lip`. 
-* Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires _complex_ SVD (singular value decomposition) and inverse FFT (fast fourier transform) which are not available in PyTorch. 
+* Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
 ### Acknowledgement
 Part of the code is based on these GitHub repositories [pytorch-cifar](https://github.com/kuangliu/pytorch-cifar), [AT_HE](https://github.com/ShawnXYang/AT_HE), and [auto-attack](https://github.com/fra31/auto-attack). 
