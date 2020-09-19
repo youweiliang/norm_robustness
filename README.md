@@ -12,7 +12,7 @@ Suppose we have a PyTorch model `model` (subclass of `nn.Module`). To use norm d
 from lip.add_lip import bind_lip
 bind_lip(model, norm='1-norm', beta=1e-3)
 ```
-where `norm` can be `'1-norm'` and `'inf-norm'` and `beta` is the regularization parameter.  
+where `norm` can be `'1-norm'` or `'inf-norm'` and `beta` is the regularization parameter.  
 Then, before each update of the model parameter (i.e., before `optimizer.step()`), apply the norm decay 
 ```python
 lipc, all_lip = model.add_lip_grad(linear=True, conv=True, bn=False)
@@ -33,8 +33,8 @@ Run the command `bash run_norm_regularization.sh`. The clean and robust accuracy
 Run the command `bash run_adv_training.sh`. The images of the distribution of norms will be saved to `./img_den`, and the images of comparison between norms for individual layers will be saved to `./img_compare_norm`. 
 
 ### Note  
-* The norm decay algorithms and related code are located in the directory `./lip`. 
+* __The norm decay algorithms and related code are located in the directory `./lip`.__ 
 * Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
-### Acknowledgement
-Part of the code is based on these GitHub repositories [pytorch-cifar](https://github.com/kuangliu/pytorch-cifar), [AT_HE](https://github.com/ShawnXYang/AT_HE), and [auto-attack](https://github.com/fra31/auto-attack). 
+### Acknowledgements
+Part of the code is based on these awesome GitHub repositories: [pytorch-cifar](https://github.com/kuangliu/pytorch-cifar), [AT_HE](https://github.com/ShawnXYang/AT_HE), and [auto-attack](https://github.com/fra31/auto-attack). 
