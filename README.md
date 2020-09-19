@@ -5,6 +5,24 @@ This repository hosts the python code for our paper [Large Norms of CNN Layers D
 * The code has been tested with Python 3.6.
 * Create a virtual environment, activate the virtual environment, and run `pip install -r requirements.txt`.
 
+### Usage of The Norm Decay Algorithm
+Our norm decay algorithm is very easy to use and is very efficient. Currently, it only supports PyTorch models. 
+Suppose we have a PyTorch model `model`. To use norm decay in the training of the model, we first bind some methods to the model
+```python
+from lip.add_lip import bind_lip
+bind_lip(model, norm='1-norm', beta=1e-3)
+```
+where `norm` can be `'1-norm'` and `'inf-norm'` and `beta` is the regularization parameter.  
+Then, before each update of the model parameter (i.e., before `optimizer.step()`), apply the norm decay 
+```python
+lipc, all_lip = model.add_lip_grad(linear=True, conv=True, bn=False)
+```
+where `linear, conv, bn` controls whether norm decay is applied to fully connected layers, convolutional layers, and batch normalization (BN) layers, respectively. The return `all_lip` is a list of the norms of all layers in the model and `lipc` is simply `sum(all_lip)`.  
+Since we find that it is quite difficult to control the norms of BN with norm decay, we also provide a method for projecting the norms of BN to a fixed value using the code 
+```python
+model.project_bn(proj_to=5)
+``` 
+
 ### Timing
 Run the command `python speed_test.py`. The results will be printed on the console. 
 
