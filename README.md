@@ -7,7 +7,7 @@ This repository hosts the python code for our paper [Large Norms of CNN Layers D
 
 ### Usage of The Norm Decay Algorithm
 Our norm decay algorithm is very easy to use and is very efficient. Currently, it only supports PyTorch models. 
-Suppose we have a PyTorch model `model`. To use norm decay in the training of the model, we first bind some methods to the model
+Suppose we have a PyTorch model `model` (subclass of `nn.Module`). To use norm decay in the training of the model, we first bind some methods to the model
 ```python
 from lip.add_lip import bind_lip
 bind_lip(model, norm='1-norm', beta=1e-3)
