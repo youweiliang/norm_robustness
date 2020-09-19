@@ -23,7 +23,7 @@ Since we find that it is quite difficult to control the norms of BN with norm de
 model.project_bn(proj_to=5)
 ``` 
 
-### Timing
+### Algorithmic Efficiency Comparison of Computing Norms of Convolutional Layers
 Run the command `python speed_test.py`. The results will be printed on the console. 
 
 ### Norm Regularization
