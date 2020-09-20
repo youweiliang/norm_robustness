@@ -17,7 +17,10 @@ Then, before each update of the model parameter (i.e., before `optimizer.step()`
 ```python
 lipc, all_lip = model.add_lip_grad(linear=True, conv=True, bn=False)
 ```
-where `linear, conv, bn` controls whether norm decay is applied to fully connected layers, convolutional layers, and batch normalization (BN) layers, respectively. The return `all_lip` is a list of the norms of all layers in the model and `lipc` is simply `sum(all_lip)`.  
+where `linear, conv, bn` controls whether norm decay is applied to fully connected layers, convolutional layers, and batch normalization (BN) layers, respectively. The return `all_lip` is a list of the norms of all layers in the model and `lipc` is simply `sum(all_lip)`. There is also a method solely for calculating the norms:
+```python
+lipc, all_lip = model.calc_lip()
+```
 Since we find that it is quite difficult to control the norms of BN with norm decay, we also provide a method for projecting the norms of BN to a fixed value using the code 
 ```python
 model.project_bn(proj_to=5)
@@ -33,7 +36,7 @@ Run the command `bash run_norm_regularization.sh`. The clean and robust accuracy
 Run the command `bash run_adv_training.sh`. The images of the distribution of norms will be saved to `./img_den`, and the images of comparison between norms for individual layers will be saved to `./img_compare_norm`. 
 
 ### Note  
-* __The norm decay algorithms and related code are located in the directory `./lip`.__ 
+* __The norm decay algorithms and related code are located in the directory `./lip`.__ _In the code_, "lip" is basically a synonym of "norm" (though they bear different meanings in the paper and literature). 
 * Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
 ### Acknowledgements
