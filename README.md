@@ -26,6 +26,10 @@ Since we find that it is quite difficult to control the norms of BN with norm de
 model.project_bn(proj_to=5)
 ``` 
 
+### Note  
+* __The norm decay algorithms and related code are located in the directory `./lip`.__ _In the code_, "lip" is used as a synonym of "norm" (though they bear different meanings in the paper and literature). 
+* Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
+
 ## Experiments
 ### Algorithmic Efficiency Comparison of Computing Norms of Convolutional Layers
 Run the command `python speed_test.py`. The results will be printed on the console. 
@@ -35,10 +39,6 @@ Run the command `bash run_norm_regularization.sh`. The clean and robust accuracy
 
 ### Norm Comparison of Adversarially Robust Models and Non-Adversarially Robust Models
 Run the command `bash run_adv_training.sh`. The images of the distribution of norms will be saved to `./img_den`, and the images of comparison between norms for individual layers will be saved to `./img_compare_norm`. 
-
-## Note  
-* __The norm decay algorithms and related code are located in the directory `./lip`.__ _In the code_, "lip" is used as a synonym of "norm" (though they bear different meanings in the paper and literature). 
-* Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
 ## Acknowledgements
 Part of the code is based on these awesome GitHub repositories: [pytorch-cifar](https://github.com/kuangliu/pytorch-cifar), [AT_HE](https://github.com/ShawnXYang/AT_HE), and [auto-attack](https://github.com/fra31/auto-attack). 
