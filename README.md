@@ -27,7 +27,7 @@ model.project_bn(proj_to=5)
 ``` 
 
 ### Note  
-* __The norm decay algorithms and related code are located in the directory `./lip`.__ _In the code_, "lip" is used as a synonym of "norm" (though they bear different meanings in the paper and literature). 
+* The norm decay algorithms and related code are located in the directory `./lip`. _**In the code**_, "lip" is used as a synonym of "norm" (though they bear different meanings in the paper and literature). 
 * Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
 ## Experiments
