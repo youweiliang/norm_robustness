@@ -25,6 +25,7 @@ Since we find that it is quite difficult to control the norms of BN with norm de
 ```python
 model.project_bn(proj_to=5)
 ``` 
+There is also a `Recorder` class for recording the layer norms and drawing the change of the norms in training. Please see the training files (e.g., `train_wd.py`) for how to use it.
 
 ### Note  
 * The norm decay algorithms and related code are located in the directory `./lip`. _**In the code**_, "lip" is used as a synonym of "norm" (though they bear different meanings in the paper and literature). 
