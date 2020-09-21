@@ -31,6 +31,7 @@ model.project_bn(proj_to=5)
 * Most of the code is based on PyTorch and only singular value clipping (SVC) is based on TensorFlow because SVC requires singular value decomposition for _complex matrices_ which is not available in PyTorch. 
 
 ## Experiments
+These are the experiments conducted in our paper. 
 ### Algorithmic Efficiency Comparison of Computing Norms of Convolutional Layers
 Run the command `python speed_test.py`. The results will be printed on the console. 
 
